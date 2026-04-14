@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(#00f, #fff);
+}
+
+.man {
+    position: relative;
+    z-index: 2;
+    transform: translate(-60px) translate(-100px);
+}
+
+.man span {
+    position: absolute;
+    left: 80px;
+    width: 80px;
+    height: 30px;
+    background: #fff;
+    display: block;
+    border-radius: 40px 80px 20px / 30px 60px 10px 10px;
+    animation: animate 2s linear infinite;
+    z-index: 2;
+}
+
+.man span:nth-child(2),
+.man span:nth-child(2) .legs {
+    animation-delay: -1s;
+}
+
+@keyframes animate {
+    0% {
+        left: 90px;
+        top: 0;
+    }
+    50% {
+        left: -90px;
+        top: 0;
+    }
+    75% {
+        top: -60px;
+    }
+    100% {
+        left: 90px;
+        top: 0;
+    }
+}
+
+.man span .legs {
+    content: '';
+    position: absolute;
+    top: -100px;
+    left: 5px;
+    width: 40px;
+    height: 110px;
+    background: #008eff;
+    z-index: -1;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    transform-origin: bottom center;
+    animation: animate2 2s linear infinite;
+}
+
+@keyframes animate2 {
+    0% {
+        transform: rotate(-30deg);
+    }
+    50% {
+        transform: rotate(30deg);
+    }
+    100% {
+        transform: rotate(30deg);
+    }
+}
+
+.man span .legs::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    width: 40px;
+    height: 110px;
+    background: #008eff;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transform-origin: bottom center;
+    animation: animate3 2s linear infinite;
+
+}
+
+@keyframes animate3 {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(-30deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.road {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    background: #333;
+    z-index: 1;
+}
+
+.road::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    transform-origin: bottom;
+    transform: perspective(300px) translateY(-50%) rotateX(45deg);
+    background: repeating-linear-gradient(90deg,transparent,transparent 50%, #fff 50%, #fff 100%);
+    background-size: 200px;
+    animation: animatRoad 2s linear infinite;
+}
+
+@keyframes animatRoad {
+    0% {
+        background-position-x: 200px;
+    }
+    100% {
+        background-position-x: 0px ;
+    }
+}
